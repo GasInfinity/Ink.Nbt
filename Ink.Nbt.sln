@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ink.Nbt", "Ink.Nbt\Ink.Nbt.csproj", "{DF598623-B777-450F-B28E-4F95E6173A55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ink.Nbt.Tests", "Ink.Nbt.Tests\Ink.Nbt.Tests.csproj", "{26ED6FEB-01FC-4535-B313-AC41501A3CF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF598623-B777-450F-B28E-4F95E6173A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF598623-B777-450F-B28E-4F95E6173A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF598623-B777-450F-B28E-4F95E6173A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF598623-B777-450F-B28E-4F95E6173A55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26ED6FEB-01FC-4535-B313-AC41501A3CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26ED6FEB-01FC-4535-B313-AC41501A3CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26ED6FEB-01FC-4535-B313-AC41501A3CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26ED6FEB-01FC-4535-B313-AC41501A3CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
