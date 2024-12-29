@@ -39,10 +39,10 @@ using Ink.Nbt;
 
 using FileStream file = File.OpenWrite("nbt.nbt.nbt");
 using NbtWriter<JavaNbtDatatypeWriter> writer = new(file);
-writer.WriteStartCompound("Too much nbt");
+writer.WriteCompoundStart("Too much nbt");
     writer.WriteSByte("SByte?", -1);
     writer.WriteString("String?", "Yes");
-writer.WriteEndCompound();
+writer.WriteCompoundEnd();
 ```
 
 - Reading raw nbt data:
