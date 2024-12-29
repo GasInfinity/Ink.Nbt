@@ -15,6 +15,7 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             dotnetCorePackages.sdk_9_0
+            dotnetPackages.Nuget
             omnisharp-roslyn
             mono
             msbuild

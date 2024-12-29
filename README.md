@@ -2,7 +2,7 @@
 
 Simple, JSON-like and high-performance NBT serialization library, inspired by the API of System.Text.Json.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) [![NuGet Version](https://img.shields.io/nuget/v/Ink.Nbt)](https://www.nuget.org/packages/Ink.Nbt/)
   
 ## 🔍 Usage
 
