@@ -141,7 +141,7 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void FixPropertyTagCore(NbtTagType type)
     {
-        if(!inList && valueWaited == NbtTagType.End)
+        if(valueWaited == NbtTagType.End)
             RealOutputSpan[propertyTagPosition] = (byte)type;
     }
 
