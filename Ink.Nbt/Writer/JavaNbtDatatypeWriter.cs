@@ -57,11 +57,12 @@ public struct JavaNbtDatatypeWriter : INbtDatatypeWriter<JavaNbtDatatypeWriter>
     public static void Write(Span<byte> output, ReadOnlySpan<char> value, out int bytesWritten)
     {
         Debug.Assert(value.Length < ushort.MaxValue);
-        BinaryPrimitives.WriteUInt16BigEndian(output.OptimizeUnsafe(sizeof(ushort)), (ushort)value.Length);
 
         if(Utf8.FromUtf16(value, output.SliceUnsafe(sizeof(ushort)), out _, out int utfBytesWritten) != OperationStatus.Done)
             Debug.Fail(string.Empty);
 
+
+        BinaryPrimitives.WriteUInt16BigEndian(output.OptimizeUnsafe(sizeof(ushort)), (ushort)utfBytesWritten);
         bytesWritten = sizeof(ushort) + utfBytesWritten;
     }
 
