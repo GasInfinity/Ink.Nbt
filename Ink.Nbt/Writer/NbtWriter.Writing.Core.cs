@@ -104,7 +104,6 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void WriteUnnamedPropertyCore(NbtTagType type)
     {
-        valueWaited = type;
         propertyTagPosition = -1;
 
         RealOutputSpan.GetUnsafe(BytesPending++) = (byte)type;
@@ -113,7 +112,6 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void WriteUnnamedPropertyCore()
     {
-        valueWaited = NbtTagType.End;
 
         RealOutputSpan.GetUnsafe(propertyTagPosition = BytesPending++) = (byte)NbtTagType.End;
     }
@@ -121,7 +119,6 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void WritePropertyNameCore(NbtTagType type, ReadOnlySpan<char> propertyName)
     {
-        valueWaited = type;
         propertyTagPosition = -1;
 
         RealOutputSpan.GetUnsafe(BytesPending++) = (byte)type;
@@ -132,7 +129,6 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void WritePropertyNameCore(ReadOnlySpan<char> propertyName)
     {
-        valueWaited = NbtTagType.End;
         RealOutputSpan.GetUnsafe(propertyTagPosition = BytesPending++) = (byte)NbtTagType.End;
         T.Write(RealOutputSpan.SliceUnsafe(BytesPending), propertyName, out int writtenBytes);
         BytesPending += writtenBytes;
@@ -141,8 +137,11 @@ public sealed partial class NbtWriter<T>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void FixPropertyTagCore(NbtTagType type)
     {
-        if(valueWaited == NbtTagType.End)
+        if(propertyTagPosition != -1 && RealOutputSpan[propertyTagPosition] == (byte)NbtTagType.End)
+        {
             RealOutputSpan[propertyTagPosition] = (byte)type;
+            propertyTagPosition = -1;
+        }
     }
 
 }
