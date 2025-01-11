@@ -18,7 +18,6 @@
             dotnetPackages.Nuget
             omnisharp-roslyn
             mono
-            msbuild
           ];
         };
       });
