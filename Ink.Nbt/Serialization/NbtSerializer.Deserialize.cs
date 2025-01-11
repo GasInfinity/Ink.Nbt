@@ -22,4 +22,31 @@ public static partial class NbtSerializer
 
         return typeInfo.Converter.Read(ref reader);
     }
+
+    public static T Deserialize<D, T>(ReadOnlySpan<byte> nbt, NbtSerializerOptions options)
+        where D : struct, INbtDatatypeReader<D>
+    {
+        NbtReader<D> reader = new(nbt, new(options.NoRootName, options.MaxDepth));
+
+        return Deserialize<D, T>(ref reader, options);
+    }
+
+    public static T Deserialize<D, T>(ref NbtReader<D> reader, NbtSerializerOptions options)
+        where D : struct, INbtDatatypeReader<D>
+    {
+        reader.Read();
+
+        if(reader.TokenType == NbtReaderTokenType.PropertyName)
+            reader.Read();
+
+        foreach(var converter in options.Converters)
+        {
+            if(converter.IsConverterFor(typeof(T)))
+            {
+                return (T)converter.ReadObject(ref reader)!;
+            }
+        }
+
+        throw new NotImplementedException($"Missing nbt converter for type '{typeof(T).FullName}'");
+    }
 }
