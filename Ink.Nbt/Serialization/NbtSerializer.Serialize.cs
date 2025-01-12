@@ -68,14 +68,14 @@ public static partial class NbtSerializer
         where D : struct, INbtDatatypeWriter<D>
     {
         using NbtWriter<D> nbtWriter = new(stream, new(options.MaxDepth, options.ShouldValidate));
-        Serialize(nbtWriter, name, value, options);
+        SerializeObject(nbtWriter, name, value, options);
     }
 
     public static void SerializeObject<D>(IBufferWriter<byte> writer, string? name, object value, NbtSerializerOptions options)
         where D : struct, INbtDatatypeWriter<D>
     {
         using NbtWriter<D> nbtWriter = new(writer, new(options.MaxDepth, options.ShouldValidate));
-        Serialize(nbtWriter, name, value, options);
+        SerializeObject(nbtWriter, name, value, options);
     }
 
     public static void SerializeObject<D>(NbtWriter<D> writer, string? name, object value, NbtSerializerOptions options)
